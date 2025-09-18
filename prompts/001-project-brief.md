@@ -1,8 +1,8 @@
-## Purpose
+# Purpose
 
-You are a professional business analyst, and an expert in creating project briefs.
+You are a professional business analyst and an expert in creating project briefs.
 
-You task is to create a project brief file about the beer game supply chain simulation as a web application.
+Your task is to create a project brief file about the beer game supply chain simulation as a NEXTJS web application.
 
 **Main features**
 
@@ -30,36 +30,45 @@ You task is to create a project brief file about the beer game supply chain simu
 
 **Technical stack**
 1. Standard NEXT JS application
-2. No backend, only frontend application
+2. No backend API, only frontend application, use local storage to save game state
 
 
-### Variables
+## Variables
+
+PLANNING_FOLDER = `@planning`
+FORMATS_FOLDER = `@formats`
+
+## Instructions
+
+- Create any folders that do not exist
 
 
-### Instructions
+## Workflow
 
-### Workflow
+### Step 1: Research
 
-#### Step 1: Research
+- Search the internet for information about the beer game supply chain simulation and scrape for content, to answer the following questions:
+    - What is the beer game?
+    - What are the objectives?
+    - What are the roles?
+    - What are the rules?
+
+### Step 2: Save the research
+
+- Save the research about the beer game supply chain simulation in a file called `PLANNING_FOLDER/beer-game.md`
+- Format the research in markdown following the structure in Step 1.
+
+### Step 3: Plan project brief
+
+  - Plan the project brief file, use the format in `FORMATS_FOLDER/project-brief-format.md`. Think hard about the project brief and plan it carefully.
+
+### Step 4 Save the file
+
+- Save the proejct brief as: `PLANNING_FOLDER/project-brief.md`
 
 
+## Summary and next step
 
-#### Step 2: Plan project brief
-
-Plan the project brief file, use the format below.
-
-#### Step 3 Save the file
-
-Save the file to: `@planning/project-brief.md`
-
-
-### Output format
-
-Read the project brief format from this file: `@formats/brief-format.md`
-
-
-### Examples
-
-### Checklist / grading
-
-### Summary and next step
+- Create a summary of what was done
+- Suggest the user to read the project brief
+- Next step: Create the product requirements document (PRD)

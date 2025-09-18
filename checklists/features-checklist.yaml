@@ -1,0 +1,50 @@
+feature_list_evaluation:
+  categories:
+    - name: Clarity & Definition
+      max_points: 20
+      criteria:
+        - "Each feature is clearly named and described (short title + 1–2 sentence explanation)."
+        - "Features are understandable by both technical and non-technical stakeholders."
+        - "Avoids vague terms like 'modern', 'intuitive' without explanation."
+        - "Avoids overly detailed design/requirements inside the feature descriptions."
+    - name: User & Business Value
+      max_points: 20
+      criteria:
+        - "Each feature provides clear user value (solves a real user problem or enables a benefit)."
+        - "Features are aligned with business goals or strategic priorities."
+        - "Features are prioritized based on value (e.g., core vs. nice-to-have)."
+        - "Stakeholders agree on the relevance and necessity of each feature."
+    - name: Completeness & Coverage
+      max_points: 20
+      criteria:
+        - "Feature list covers all main aspects of the system’s intended scope."
+        - "There are no major gaps in user workflows or business processes."
+        - "Features are not duplicated or overlapping."
+        - "Includes non-functional or supporting features (e.g. security, performance, admin) where relevant."
+    - name: Feasibility & Constraints
+      max_points: 20
+      criteria:
+        - "Features are technically feasible given known constraints."
+        - "Features are scoped realistically (can be delivered in planned timeframe)."
+        - "Dependencies between features are identified."
+        - "Features can be incrementally delivered (support iterative development)."
+    - name: Traceability & Readiness
+      max_points: 20
+      criteria:
+        - "Each feature can be mapped to future detailed requirements/user stories."
+        - "Features are uniquely identified and tracked (IDs, versions)."
+        - "Features are organized/grouped logically (modules, epics, etc.)."
+        - "Feature list is maintained and version-controlled."
+  scoring:
+    - range: 85-100
+      label: "Excellent"
+      meaning: "Feature list is clear, complete, valuable, and ready for requirements work."
+    - range: 70-84
+      label: "Good"
+      meaning: "Solid feature list, but has minor gaps or unclear items."
+    - range: 50-69
+      label: "Fair"
+      meaning: "Needs revision — lacks clarity, coverage, or prioritization."
+    - range: 0-49
+      label: "Poor"
+      meaning: "Not ready — major rework needed before development planning."

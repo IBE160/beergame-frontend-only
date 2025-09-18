@@ -1,0 +1,50 @@
+requirements_evaluation:
+  categories:
+    - name: Clarity & Unambiguity
+      max_points: 20
+      criteria:
+        - "Requirement is a single, concise statement in normative form (e.g., 'The system shall …'); avoids compound 'and/or' constructions."
+        - "Uses defined terms and glossary references; avoids subjective words (e.g., 'easy', 'intuitive', 'robust') without definition."
+        - "States scope and boundaries clearly (actor, trigger, outcome)."
+        - "Focuses on WHAT, not HOW (no premature design/implementation detail)."
+    - name: Testability & Measurability
+      max_points: 20
+      criteria:
+        - "Contains objective acceptance criteria enabling pass/fail verification."
+        - "Includes quantitative thresholds/tolerances where applicable (e.g., performance, accuracy, capacity)."
+        - "Identifies verification method (test, analysis, inspection, demonstration)."
+        - "Lists preconditions/postconditions; defines observable outcomes."
+    - name: Completeness & Coverage
+      max_points: 20
+      criteria:
+        - "Covers nominal behavior and relevant edge/error/exception paths."
+        - "Includes necessary non-functional constraints (security, performance, availability, usability, compliance) when relevant."
+        - "References required external interfaces, data contracts, or regulations; no missing dependencies."
+        - "No duplicates or gaps relative to user journeys/use cases."
+    - name: Consistency & Feasibility
+      max_points: 20
+      criteria:
+        - "Consistent with other requirements; no conflicts or contradictions."
+        - "Feasible within known technical, budget, and schedule constraints."
+        - "Level of abstraction is appropriate and consistent across the document."
+        - "Dependencies and assumptions are explicitly listed; no hidden coupling."
+    - name: Traceability & Lifecycle Readiness
+      max_points: 20
+      criteria:
+        - "Has a unique ID and version; change history captured."
+        - "Traces upward to features/epics, stakeholder needs, and business objectives."
+        - "Traces downward to design elements, test cases, and risk items when available."
+        - "Prioritized and statused (e.g., MoSCoW or MUST/SHOULD/COULD; Draft/Approved)."
+  scoring:
+    - range: 85-100
+      label: "Excellent"
+      meaning: "Requirements set is clear, verifiable, complete, and ready for implementation planning and test design."
+    - range: 70-84
+      label: "Good"
+      meaning: "Generally strong; minor clarity or coverage issues to refine."
+    - range: 50-69
+      label: "Fair"
+      meaning: "Needs revision — notable ambiguity, testability, or consistency gaps."
+    - range: 0-49
+      label: "Poor"
+      meaning: "Not ready — significant rework required before development can proceed."}

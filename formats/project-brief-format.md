@@ -56,20 +56,20 @@
 ## 6. Timeline and Milestones
 | Milestone         | Date        |
 |-------------------|-------------|
-| Design Complete   | [YYYY-MM-DD] |
+| Planning Complete   | [YYYY-MM-DD] |
 | Development Done  | [YYYY-MM-DD] |
-| Testing Complete  | [YYYY-MM-DD] |
 | Launch             | [YYYY-MM-DD] |
 
 ---
 
 ## 7. Roles and Responsibilities
-| Role             | Name          | Responsibilities            |
-|------------------|--------------|------------------------------|
-| Project Owner     | [Name]        | Approvals, priorities        |
-| Developer(s)      | [Name(s)]     | Build the application        |
-| Designer          | [Name]        | Create UI/UX                 |
-| QA / Tester       | [Name]        | Test and report bugs         |
+| Role             | Responsibilities            |
+|------------------|------------------------------|
+| Project Owner     | Project brief, Approvals, priorities        |
+| Product Manager   | Product Requirements Document (PRD)        |
+| Designer          | UI/UX                 |
+| Architect         | Architecture          |
+| Developer      | Programming        |
 
 ---
 
