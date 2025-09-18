@@ -140,7 +140,7 @@ Ensure all implementation files include:
 - Read the design principles: `DATA_FOLDER/design-principles.yaml`
 - Read the UX principles: `DATA_FOLDER/ux-principles.yaml`
 
-### Step 2: Read user added inspiration images
+### Step 2: Read user added inspiration images or files
 
 - Read the user added inspiration images in the folder: `DATA_FOLDER/inspiration-images/`
 
