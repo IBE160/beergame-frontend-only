@@ -40,7 +40,6 @@ FORMATS_FOLDER = `@formats`
 
 ## Instructions
 
-- Create any folders that do not exist
 
 
 ## Workflow

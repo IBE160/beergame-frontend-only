@@ -23,7 +23,7 @@ DATA_FOLDER = `@data`
 
 ## Output Structure & File Organization
 
-You must create a structured directory layout in the project to document all design decisions for future agent reference. Create the following structure:
+You must create a structured directory layout in the project to document all design decisions for future agent reference. Create the following FOLDER_STRUCTURE:
 
     PLANNING_FOLDER/design/
         ├── README.md                    # Project design overview and navigation
@@ -214,6 +214,9 @@ Ensure all implementation files include:
     - <goto> Step 1
 </if>
 
+### Step 7: Check folder structure
+
+- Check that ALL files in the FOLDER_STRUCTURE are created. If NOT, <goto> step 3 and create the missing files.
 
 ## Summary and next step
 
