@@ -1,0 +1,151 @@
+final_deliverable_grading:
+  # Scoring model: Each criterion is scored 0–5.
+  # Category score = (average criterion score / 5) * category.max_points
+  # Overall score = sum of category scores (0–100)
+  categories:
+    - key: design_system_completeness
+      display_name: "Design System Completeness"
+      max_points: 25
+      criteria:
+        - id: color_palette_accessibility
+          description: "Color palette defined with accessibility ratios verified"
+        - id: typography_responsive
+          description: "Typography system established with responsive scaling"
+        - id: spacing_scale_consistency
+          description: "Spacing system implemented with consistent mathematical scale"
+        - id: component_library_documented
+          description: "Component library documented with all states and variants"
+        - id: animation_system_specified
+          description: "Animation system specified with timing and easing standards"
+        - id: platform_adaptations
+          description: "Platform adaptations documented for target platforms"
+
+    - key: feature_design_completeness
+      display_name: "Feature Design Completeness"
+      max_points: 25
+      criteria:
+        - id: user_journey_mapping
+          description: "User journey mapping complete for all user types and scenarios"
+        - id: screen_state_coverage
+          description: "Screen state documentation covers all possible UI states"
+        - id: interaction_specs_inputs
+          description: "Interaction specifications include all user input methods"
+        - id: responsive_specs_breakpoints
+          description: "Responsive specifications cover all supported breakpoints"
+        - id: accessibility_wcag_aa
+          description: "Accessibility requirements meet WCAG AA standards minimum"
+        - id: performance_targets
+          description: "Performance considerations identified with specific targets"
+
+    - key: documentation_quality
+      display_name: "Documentation Quality"
+      max_points: 25
+      criteria:
+        - id: file_structure_conventions
+          description: "File structure is complete and follows established conventions"
+        - id: cross_references_ia
+          description: "Cross-references are accurate and create a cohesive information architecture"
+        - id: implementation_guidance
+          description: "Implementation guidance is specific and actionable for developers"
+        - id: version_control_process
+          description: "Version control is established with clear update procedures"
+        - id: qa_processes
+          description: "Quality assurance processes are documented and verifiable"
+
+    - key: technical_integration_readiness
+      display_name: "Technical Integration Readiness"
+      max_points: 25
+      criteria:
+        - id: design_tokens_exportable
+          description: "Design tokens are exportable in formats developers can consume"
+        - id: component_specs_technical
+          description: "Component specifications include technical implementation details"
+        - id: api_integration_points
+          description: "API integration points are identified and documented"
+        - id: performance_budgets
+          description: "Performance budgets are established with measurable criteria"
+        - id: testing_procedures
+          description: "Testing procedures are defined for design system maintenance"
+
+  scoring_scale:
+    # Shared 0–5 rubric applied to every criterion
+    levels:
+      - score: 0
+        label: "Missing"
+        descriptor: "Not addressed or no evidence provided."
+      - score: 1
+        label: "Poor"
+        descriptor: "Addressed superficially; major gaps; not usable as-is."
+      - score: 2
+        label: "Limited"
+        descriptor: "Partially addressed; significant ambiguity or inconsistency."
+      - score: 3
+        label: "Adequate"
+        descriptor: "Meets minimum expectations; some gaps remain."
+      - score: 4
+        label: "Good"
+        descriptor: "Well-specified with minor refinements needed."
+      - score: 5
+        label: "Excellent"
+        descriptor: "Comprehensive, precise, and implementation-ready."
+
+  computation:
+    formula:
+      category_score: "(avg(criterion_scores) / 5) * category.max_points"
+      overall_score: "sum(category_scores)  # 0–100"
+    notes:
+      - "If a criterion is not applicable, mark it as NA and exclude from the average."
+      - "Use at least two forms of evidence per criterion when possible (spec links, screenshots, token JSON, etc.)."
+
+  quality_bands:
+    - range: "85-100"
+      label: "Excellent"
+      meaning: "Ready for implementation; only polish tasks remain."
+    - range: "70-84"
+      label: "Good"
+      meaning: "Minor issues; proceed with tracked fixes."
+    - range: "50-69"
+      label: "Fair"
+      meaning: "Multiple gaps; address before implementation."
+    - range: "0-49"
+      label: "Poor"
+      meaning: "Not ready; significant rework required."
+
+  review_template:
+    project: "[name]"
+    version: "[semver or date]"
+    reviewers:
+      - name: "[Reviewer 1]"
+        role: "[Design/Eng/QA/Product]"
+    evidence_links:
+      - "[URL or file path]"
+    scores:
+      design_system_completeness:
+        color_palette_accessibility: null
+        typography_responsive: null
+        spacing_scale_consistency: null
+        component_library_documented: null
+        animation_system_specified: null
+        platform_adaptations: null
+      feature_design_completeness:
+        user_journey_mapping: null
+        screen_state_coverage: null
+        interaction_specs_inputs: null
+        responsive_specs_breakpoints: null
+        accessibility_wcag_aa: null
+        performance_targets: null
+      documentation_quality:
+        file_structure_conventions: null
+        cross_references_ia: null
+        implementation_guidance: null
+        version_control_process: null
+        qa_processes: null
+      technical_integration_readiness:
+        design_tokens_exportable: null
+        component_specs_technical: null
+        api_integration_points: null
+        performance_budgets: null
+        testing_procedures: null
+    overall_score: null
+    quality_band: null
+    notes: "[summary of findings]"

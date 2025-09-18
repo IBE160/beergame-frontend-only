@@ -1,0 +1,254 @@
+architecture_assessment:
+  # General software architecture checklist & scoring for both frontend and backend systems
+  model:
+    scale_per_criterion: 0-5
+    overall_points: 100
+    rules:
+      - "Category score = (avg(non-NA criterion scores) / 5) * category.max_points"
+      - "Overall score = sum(category scores)"
+      - "Mark not-applicable items as NA and exclude from averages"
+      - "Evidence links are recommended for each criterion"
+
+  categories:
+    - key: requirements_alignment
+      display_name: "Requirements & Stakeholder Alignment"
+      max_points: 10
+      criteria:
+        - id: problem_fit
+          description: "Architecture addresses core user/business requirements and constraints"
+        - id: scope_traceability
+          description: "Clear traceability between features ↔ requirements ↔ components"
+        - id: risk_tradeoffs
+          description: "Explicit trade-offs and assumptions documented"
+        - id: roadmap_alignment
+          description: "Supports MVP now and foreseeable roadmap evolution"
+
+    - key: system_design
+      display_name: "System Design Quality (Modularity, Boundaries, Coupling/Cohesion)"
+      max_points: 12
+      criteria:
+        - id: clear_boundaries
+          description: "Well-defined service/module boundaries with single responsibility"
+        - id: coupling_cohesion
+          description: "Low coupling, high cohesion; dependency direction is intentional"
+        - id: interfaces_contracts
+          description: "Stable, versioned contracts; backward compatibility strategy"
+        - id: scalability_paths
+          description: "Clear vertical/horizontal scaling paths and partitioning strategy"
+        - id: technology_rationale
+          description: "Technology choices justified vs. requirements and team skills"
+
+    - key: data_api_design
+      display_name: "Data & API Design"
+      max_points: 12
+      criteria:
+        - id: data_model_quality
+          description: "Normalized and/or appropriately denormalized models; indexing strategy"
+        - id: data_lifecycle
+          description: "Retention, archival, migration, and backup/restore defined"
+        - id: api_style_consistency
+          description: "Consistent API style (REST/GraphQL/gRPC) with pagination, filtering, error envelopes"
+        - id: schema_evolution
+          description: "Schema and contract versioning, deprecation, and compatibility plan"
+        - id: caching_strategy
+          description: "Layered caching (CDN/HTTP/app) and invalidation rules"
+
+    - key: security_privacy
+      display_name: "Security & Privacy"
+      max_points: 12
+      criteria:
+        - id: authn_authz
+          description: "Authentication and authorization patterns (sessions/tokens, roles/scopes)"
+        - id: data_protection
+          description: "Encryption in transit/at rest, key management, secret handling"
+        - id: threat_model
+          description: "Threat modeling, hardening (CSP, input validation), secure defaults"
+        - id: privacy_controls
+          description: "PII minimization, consent, retention, data subject rights"
+        - id: dependency_security
+          description: "Supply chain security (SBOM, updates, allowlists)"
+
+    - key: performance_scalability
+      display_name: "Performance & Scalability"
+      max_points: 10
+      criteria:
+        - id: budgets_targets
+          description: "Defined budgets/targets (e.g., LCP/TTFB for FE; p95 latency for BE)"
+        - id: capacity_model
+          description: "Throughput and concurrency assumptions; load modeling"
+        - id: performance_optimization
+          description: "Code-splitting, async patterns, indexing, resource optimization"
+        - id: elasticity
+          description: "Autoscaling/triggers, backpressure, and queueing strategies"
+
+    - key: reliability_resilience
+      display_name: "Reliability & Resilience"
+      max_points: 10
+      criteria:
+        - id: failure_modes
+          description: "Defined failure modes; circuit breakers, retries, timeouts"
+        - id: graceful_degradation
+          description: "Fallbacks, read-only modes, offline/limited connectivity patterns"
+        - id: redundancy_recovery
+          description: "Redundancy, disaster recovery RTO/RPO, restore runbooks"
+        - id: data_integrity
+          description: "Idempotency, exactly-once/at-least-once semantics where needed"
+
+    - key: observability_operability
+      display_name: "Observability & Operability"
+      max_points: 8
+      criteria:
+        - id: telemetry
+          description: "Logs, metrics, traces; correlation IDs; structured logging"
+        - id: dashboards_alerts
+          description: "Actionable dashboards and SLO-based alerting with ownership"
+        - id: feature_flags
+          description: "Feature flags, kill switches, runtime config controls"
+        - id: runbooks
+          description: "Runbooks, on-call procedures, incident response workflows"
+
+    - key: devex_tooling
+      display_name: "Developer Experience & Tooling"
+      max_points: 8
+      criteria:
+        - id: local_dev_efficiency
+          description: "Fast local setup, seed data, ergonomic DX (hot reload, mocks)"
+        - id: code_quality_gates
+          description: "Linters, formatters, type-checking, pre-commit hooks"
+        - id: documentation
+          description: "Up-to-date README/architecture docs, ADRs, examples"
+        - id: component_library_storybook
+          description: "(FE) Design system/Storybook; (BE) service templates"
+
+    - key: delivery_operations
+      display_name: "Delivery, CI/CD & Environments"
+      max_points: 8
+      criteria:
+        - id: pipelines
+          description: "CI/CD with tests, security scans, artifact/versioning"
+        - id: environments
+          description: "Dev/stage/prod parity; preview environments; config management"
+        - id: rollout_strategy
+          description: "Canary/blue-green/feature flags; schema migration strategy"
+        - id: testing_strategy
+          description: "Unit/integration/E2E/perf/a11y (where applicable)"
+
+    - key: cost_sustainability
+      display_name: "Cost & Sustainability"
+      max_points: 5
+      criteria:
+        - id: cost_model
+          description: "Forecasted cloud/CDN costs; scaling cost curves and limits"
+        - id: resource_efficiency
+          description: "CPU/memory usage, cold-starts, data egress, caching effectiveness"
+
+    - key: compliance_governance
+      display_name: "Compliance & Governance"
+      max_points: 5
+      criteria:
+        - id: regulatory_fit
+          description: "Regulatory fit (GDPR/PCI/HIPAA/etc.) and data residency"
+        - id: change_governance
+          description: "ADRs, change control, auditability, version pinning"
+
+  scoring_scale:
+    levels:
+      - score: 0
+        label: "Missing"
+        descriptor: "Not addressed or no evidence provided"
+      - score: 1
+        label: "Poor"
+        descriptor: "Superficial; major gaps; not usable"
+      - score: 2
+        label: "Limited"
+        descriptor: "Partially addressed; significant ambiguity"
+      - score: 3
+        label: "Adequate"
+        descriptor: "Meets minimum expectations; some gaps"
+      - score: 4
+        label: "Good"
+        descriptor: "Well specified; minor refinements needed"
+      - score: 5
+        label: "Excellent"
+        descriptor: "Comprehensive, precise, implementation-ready"
+
+  quality_bands:
+    - range: "85-100"
+      label: "Excellent"
+      meaning: "Ready for implementation; polish tasks remain"
+    - range: "70-84"
+      label: "Good"
+      meaning: "Minor issues; proceed with tracked fixes"
+    - range: "50-69"
+      label: "Fair"
+      meaning: "Multiple gaps; address before implementation"
+    - range: "0-49"
+      label: "Poor"
+      meaning: "Not ready; significant rework required"
+
+  review_template:
+    project: "[name]"
+    version: "[semver or date]"
+    reviewers:
+      - name: "[Reviewer 1]"
+        role: "[Architect/FE/BE/QA/Sec/DevOps]"
+    evidence_links:
+      - "[URL or file path]"
+    scores:
+      requirements_alignment:
+        problem_fit: null
+        scope_traceability: null
+        risk_tradeoffs: null
+        roadmap_alignment: null
+      system_design:
+        clear_boundaries: null
+        coupling_cohesion: null
+        interfaces_contracts: null
+        scalability_paths: null
+        technology_rationale: null
+      data_api_design:
+        data_model_quality: null
+        data_lifecycle: null
+        api_style_consistency: null
+        schema_evolution: null
+        caching_strategy: null
+      security_privacy:
+        authn_authz: null
+        data_protection: null
+        threat_model: null
+        privacy_controls: null
+        dependency_security: null
+      performance_scalability:
+        budgets_targets: null
+        capacity_model: null
+        performance_optimization: null
+        elasticity: null
+      reliability_resilience:
+        failure_modes: null
+        graceful_degradation: null
+        redundancy_recovery: null
+        data_integrity: null
+      observability_operability:
+        telemetry: null
+        dashboards_alerts: null
+        feature_flags: null
+        runbooks: null
+      devex_tooling:
+        local_dev_efficiency: null
+        code_quality_gates: null
+        documentation: null
+        component_library_storybook: null
+      delivery_operations:
+        pipelines: null
+        environments: null
+        rollout_strategy: null
+        testing_strategy: null
+      cost_sustainability:
+        cost_model: null
+        resource_efficiency: null
+      compliance_governance:
+        regulatory_fit: null
+        change_governance: null
+    overall_score: null
+    quality_band: null
+    notes: "[summary of findings]"
