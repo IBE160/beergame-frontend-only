@@ -8,6 +8,8 @@ Your task is to transform  design principles into comprehensive design deliverab
 PLANNING_FOLDER = `@planning`
 FORMATS_FOLDER = `@formats`
 DATA_FOLDER = `@data`
+GRADE_THRESHOLD = 95
+GRADE = 0 
 
 
 ## Instructions
@@ -92,43 +94,6 @@ You must create a structured directory layout in the project to document all des
 - **Consistent markdown formatting** using established patterns
 - **Searchable content** with descriptive headings and keywords
 
-### File Template Structure
-
-Start each file with this frontmatter:
-
-    ---
-    title: [Descriptive File Title]
-    description: [Brief description of file contents and purpose]
-    feature: [Associated feature name, if applicable]
-    last-updated: [ISO date format: YYYY-MM-DD]
-    version: [Semantic version if applicable]
-    related-files: 
-      - [relative/path/to/related/file.md]
-      - [relative/path/to/another/file.md]
-    dependencies:
-      - [List any prerequisite files or components]
-    status: [draft | review | approved | implemented]
-    ---
-
-    # [File Title]
-
-    ## Overview
-    [Brief description of what this document covers]
-
-    ## Table of Contents
-    [Auto-generated or manual TOC for longer documents]
-
-    [Main content sections...]
-
-    ## Related Documentation
-    [Links to related files and external resources]
-
-    ## Implementation Notes
-    [Developer-specific guidance and considerations]
-
-    ## Last Updated
-    [Change log or update notes]
-
 ### Cross-Referencing System
 - **Use relative links** between files: `[Component Name](../components/button.md)`
 - **Always link** to relevant design system components from feature files
@@ -139,6 +104,7 @@ Start each file with this frontmatter:
 ### Developer Handoff Integration
 Ensure all implementation files include:
 - **Precise measurements** in rem/px
+
 
 ## Platform-Specific Adaptations
 
@@ -183,23 +149,38 @@ Ensure all implementation files include:
 - Create the top level design files in the `PLANNING_FOLDER/design` directory:
     - `PLANNING_FOLDER/design/README.md`  - Project design overview with navigation links
     - `PLANNING_FOLDER/design/design-system/style-guide.yaml` - Style guide overview with navigation links, use the format in `DATA_FOLDER/style-guide-format.yaml` and use the inspiration images and the design principles to create the style guide, fitted to the project goals, topics and features. DO NOT use the examples in the style guide format file as inspiration, they are simply there to show the format.
-    - `PLANNING_FOLDER/design/design-system/tokens/` - create all foundational design elements
+    - create the following files that MUST lie inside the `PLANNING_FOLDER/design/design-system/tokens/` folder using the format in `@formats/design-format.md`:
+      - colors.md
+      - typograpy.md
+      - spacing.md
+      - animations.md
     - `PLANNING_FOLDER/design/accessibility/guidelines.md` - accessibility overview with navigation links
 
 ### Step 4: Create features design files
 
 <foreach> feature in features <do>
-    - Create README.md for the feature in `PLANNING_FOLDER/design/features/[feature-name]/README.md` - Feature design summary and overview
-    - Create user journey.md for the feature in `PLANNING_FOLDER/design/features/[feature-name]/user-journey.md` - User journey analysis for the feature
-    - Create screen-states.md for the feature in `PLANNING_FOLDER/design/features/[feature-name]/screen-states.md` - All screen states and visual specifications
-    - Create interactions.md for the feature in `PLANNING_FOLDER/design/features/[feature-name]/interactions.md` - Interaction patterns and animations for the feature
-    - Create accessibility.md for the feature in `PLANNING_FOLDER/design/features/[feature-name]/accessibility.md` - Accessibility requirements for the feature
-    - Create implementation.md for the feature in `PLANNING_FOLDER/design/features/[feature-name]/implementation.md` -Developer-focused implementation guide
+    - create folder: `PLANNING_FOLDER/design/features/[feature-name]`
+    - inside this folder, create the following files using the format in `@formats/design-format.md`:
+      - `README.md` - Feature design summary and overview
+      - `user-journey.md` - User journey analysis for the feature
+      - `screen-states.md` - All screen states and visual specifications
+      - `interactions.md` - Interaction patterns and animations for the feature
+      - `accessibility.md` - Accessibility requirements for the feature
+      - `implementation.md` -Developer-focused implementation guide
 </foreach>
 
-### Step 5: Create the remainding design files
-
-- create component files in `PLANNING_FOLDER/design/components/`
+### Step 5: Create the remaining design files
+    - create folder: `PLANNING_FOLDER/design/components`
+    - inside this folder, create the following files using the format in `@formats/design-format.md`:
+      - `README.md` - Component library overview
+      - `buttons.md` - Button specifications and variants
+      - `forms.md` - Form element specifications
+      - `navigation.md` - Navigation component specifications
+      - `cards.md` - Card component specifications
+      - `modals.md` - Modal and dialog specifications
+      <foreach> additional component <do>
+          `[component-name]` - Useful custom component that is needed
+      </foreach>
 - copy the inspiration images to `PLANNING_FOLDER/design/assets/reference-images/`
 - create remaining files in `PLANNING_FOLDER/design/assets/` and `PLANNING_FOLDER/design/accessibility/`
 
@@ -216,7 +197,7 @@ Ensure all implementation files include:
 
 ### Step 7: Check folder structure
 
-- Check that ALL files in the FOLDER_STRUCTURE are created. If NOT, <goto> step 3 and create the missing files.
+- Check that ALL files in the FOLDER_STRUCTURE are created. Compare the expected FOLDER_STRUCTURE with what actually has been made. If NOT, <goto> step 3 and create the missing files.
 
 ## Summary and next step
 
