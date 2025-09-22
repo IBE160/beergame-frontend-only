@@ -46,7 +46,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 1
   - **User Instructions**: Update `tailwind.config.ts` to include the design tokens for a consistent styling foundation.
 
-- [ ] Step 4: Global Styles and Layout
+- [x] Step 4: Global Styles and Layout
   - **Task**: Configure global styles in `globals.css` using the defined typography and color system. Set up the root layout in `app/layout.tsx` with the primary font.
   - **Files**: 
     - `src/styles/globals.css`: Apply base styles, including body background color and default text color from the design system.
