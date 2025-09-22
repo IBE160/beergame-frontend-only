@@ -124,7 +124,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 12
   - **User Instructions**: Add the instructional content to the landing page.
 
-- [ ] Step 14: F002 - Game Configuration Page
+- [x] Step 14: F002 - Game Configuration Page
   - **Task**: Create the game configuration page where players can select their role and the game duration, using the `Card` and `Slider` components.
   - **Files**: 
     - `src/app/game/page.tsx`: This will be the main game page, but will initially show the configuration screen.
@@ -132,7 +132,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 7, Step 8, Step 12
   - **User Instructions**: Build the game configuration UI, ensuring the `Card` components are selectable as per the design.
 
-- [ ] Step 15: F002 - Game State Initialization
+- [x] Step 15: F002 - Game State Initialization
   - **Task**: Implement the logic in the `GameController` to initialize the game state based on the user's configuration.
   - **Files**: 
     - `src/controller/GameController.ts`: Add an `initializeGame` method.

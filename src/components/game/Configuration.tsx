@@ -5,12 +5,20 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Slider } from '@/components/ui/Slider';
 import { Role } from '@/types';
+import GameController from '@/controller/GameController';
 
 const roles: Role[] = ['Retailer', 'Wholesaler', 'Distributor', 'Manufacturer'];
 
 export function Configuration() {
   const [selectedRole, setSelectedRole] = React.useState<Role | null>(null);
   const [duration, setDuration] = React.useState([26]);
+  const gameController = new GameController();
+
+  const handleStartGame = () => {
+    if (selectedRole) {
+      gameController.initializeGame(selectedRole, duration[0]);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
@@ -48,7 +56,7 @@ export function Configuration() {
       </div>
 
       <div className="text-center">
-        <Button size="lg" disabled={!selectedRole}>
+        <Button size="lg" disabled={!selectedRole} onClick={handleStartGame}>
           Start Game
         </Button>
       </div>
