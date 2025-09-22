@@ -102,7 +102,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 9
   - **User Instructions**: Implement the `useGameStore` hook using Zustand.
 
-- [ ] Step 11: Game Controller Stub
+- [x] Step 11: Game Controller Stub
   - **Task**: Create a stub for the `GameController` class.
   - **Files**: 
     - `src/controller/GameController.ts`: Create the `GameController` class with a constructor and placeholder methods.
