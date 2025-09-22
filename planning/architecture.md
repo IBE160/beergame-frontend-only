@@ -1,279 +1,235 @@
-# Architecture Document: Beer Game Supply Chain Simulation (v2)
+# Architecture Document: Beer Game Supply Chain Simulation (v4 - Final)
 
 ## 1. Executive Summary
 
-This document outlines the technical architecture for the Beer Game Supply Chain Simulation, a web-based, single-player educational game. This is an enhanced version of the original architecture document, with more detailed implementation patterns, code examples, and a proposed folder structure.
+This document provides the complete technical architecture for the Beer Game Supply Chain Simulation. It serves as the definitive blueprint for all engineering work.
 
-- **Project Overview**: A frontend-only application that simulates the classic Beer Game, designed to be accessible, educational, and engaging without requiring a backend or multiple participants.
-- **Technology Stack**: The application will be built using **Next.js** with **TypeScript** for the core framework, **Tailwind CSS** for styling, and **Zustand** for state management. **Chart.js** will be used for data visualization. This stack was chosen for its strong developer experience, performance, and alignment with modern web standards.
-- **System Components**: The architecture is component-based, centered around a main `GameProvider` that manages state. Key components include the `Dashboard`, `OrderPlacement`, `SupplyChainVisualizer`, and `HistoricalDataCharts`.
-- **Critical Constraints**: The application is entirely client-side, relying on browser local storage for persistence. This imposes a 5MB data limit and requires an architecture that supports offline functionality.
+- **Project Overview**: A frontend-only, single-player, web-based application that simulates the classic MIT Beer Game. The primary goal is to create an engaging and educational experience that teaches core supply chain principles like the bullwhip effect.
 
-## 2. `src` Folder Structure
+- **Key Architectural Decisions**:
+    1.  **Frontend-Only**: To ensure accessibility and simplify deployment, the application will be entirely client-side with no backend dependency.
+    2.  **Centralized Logic Controller**: A non-UI `GameController` will manage all business logic, separating it from the state and view layers.
+    3.  **Global State Management**: A lightweight global store (Zustand) will hold the game state, acting as a single source of truth.
+    4.  **Component-Based UI**: The user interface will be built with modular, reusable React components.
 
-A well-organized folder structure is crucial for maintainability. The following structure is proposed:
+- **Technology Stack**: **Next.js (App Router)** with **TypeScript**, **Zustand** for state, and **Tailwind CSS** for styling.
+
+- **Critical Constraints**: The application must function entirely within the user's browser, relying on **Local Storage** for state persistence. This imposes a data size limit (approx. 5MB) and necessitates a design that supports offline functionality after the initial load.
+
+## 2. For Backend Engineers
+
+This is a frontend-only project. No backend services are required. All data and game logic are handled client-side.
+
+## 3. For Frontend Engineers
+
+This section provides a complete guide for building the application.
+
+### 3.1. Technology Stack Rationale
+
+-   **Framework: Next.js 14+ (App Router)**: Chosen for its hybrid rendering capabilities, file-based routing, performance optimizations (code-splitting, prefetching), and excellent developer experience.
+-   **Language: TypeScript**: Ensures type safety, which is critical for a complex state model like the Beer Game. It improves maintainability and reduces runtime errors.
+-   **State Management: Zustand**: A minimal, fast, and scalable state management library. It's simpler than Redux and avoids the need for extensive boilerplate or context providers.
+-   **Styling: Tailwind CSS**: A utility-first CSS framework that allows for rapid and consistent UI development directly within the markup.
+
+### 3.2. `src` Folder Structure
+
+This structure separates concerns and promotes modularity.
 
 ```
 src/
-├── app/
+├── app/                # Next.js App Router: Pages and Layouts
 │   ├── game/
 │   │   └── page.tsx
 │   ├── summary/
 │   │   └── page.tsx
-│   └── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── charts/
+│   ├── layout.tsx      # Root Layout
+│   └── page.tsx        # Home Page
+├── components/         # Reusable React Components
+│   ├── charts/         # Charting components
 │   │   ├── HistoricalDataCharts.tsx
 │   │   └── InventoryChart.tsx
-│   ├── game/
+│   ├── game/           # Game-specific components
 │   │   ├── Dashboard.tsx
 │   │   ├── OrderPlacement.tsx
 │   │   └── SupplyChainVisualizer.tsx
-│   ├── layout/
+│   ├── layout/         # Page layout components (Header, Footer)
 │   │   ├── Header.tsx
 │   │   └── Footer.tsx
-│   └── ui/
+│   └── ui/             # Generic, reusable UI elements
 │       ├── Button.tsx
 │       ├── Card.tsx
 │       └── Slider.tsx
-├── constants/
-│   ├── game.ts
-│   └── index.ts
-├── hooks/
-│   └── useGameStore.ts
-├── lib/
+├── constants/          # Application-wide constants
+│   └── game.ts
+├── controller/         # Core application logic
+│   └── GameController.ts
+├── hooks/              # Custom React hooks
+│   └── useGameController.ts
+├── lib/                # Utility functions and external services
 │   ├── ai.ts
 │   ├── localStorage.ts
 │   └── utils.ts
-├── store/
+├── store/              # Zustand global state store
 │   └── gameStore.ts
-└── types/
+├── styles/             # Global styles
+│   └── globals.css
+└── types/              # TypeScript type definitions
     └── index.ts
 ```
 
-## 3. For Frontend Engineers
+### 3.3. System Component Architecture
 
-### Component Architecture and State Management
+The architecture is designed around a clear separation of concerns: **View (React) -> State (Zustand) -> Logic (GameController)**.
 
-- **Component Structure**: The application will follow a modular, component-based architecture. Components will be organized by feature (e.g., `components/game/Dashboard.tsx`, `components/charts/InventoryChart.tsx`).
-- **State Management**: **Zustand** will be used for global state management. A central `gameStore` will hold the entire game state, including the state of each supply chain role, the current week, and historical data. This provides a single source of truth and simplifies state updates.
-- **Component State**: Local component state (e.g., UI toggles, form inputs) will be managed using React's `useState` and `useReducer` hooks where appropriate.
+1.  **View (React Components)**: The components are responsible only for rendering the UI based on the current state and forwarding user events to the `GameController`.
+2.  **Logic (`GameController`)**: This class contains all the game's rules and business logic. It is instantiated within the React tree and interacts with the state management layer.
+3.  **State (Zustand Store)**: The store holds the game state. It is updated exclusively by the `GameController`.
 
-### Zustand Store (`store/gameStore.ts`)
+### 3.4. Component Implementation Guide
 
-The Zustand store will be the single source of truth for the game state.
+#### `app/game/page.tsx`
+This Client Component is the main entry point for the game UI. It initializes the `GameController`.
 
-```typescript
-import create from 'zustand';
-import { GameState, Role } from '@/types';
+-   **Code**:
+    ```typescript
+    "use client";
+    import { useGameController } from '@/hooks/useGameController';
+    // ... other imports
 
-interface GameActions {
-  placeOrder: (role: Role, quantity: number) => void;
-  advanceWeek: () => void;
-  // ... other actions
-}
+    export default function GamePage() {
+      const gameController = useGameController();
 
-export const useGameStore = create<GameState & GameActions>((set, get) => ({
-  gameId: '',
-  playerRole: 'Retailer',
-  duration: 20,
-  currentWeek: 1,
-  roles: {
-    // ... initial role states
-  },
-  history: [],
-  placeOrder: (role, quantity) => {
-    // ... logic to place an order
-  },
-  advanceWeek: () => {
-    // ... complex logic to advance the game by one week
-    // This will involve:
-    // 1. Updating shipments
-    // 2. Fulfilling orders
-    // 3. Calculating costs
-    // 4. Running the AI for other roles
-    // 5. Updating the history
-  },
-}));
-```
-
-### React Component Example (`components/game/Dashboard.tsx`)
-
-Components will connect to the Zustand store to access state and actions.
-
-```typescript
-import React from 'react';
-import { useGameStore } from '@/hooks/useGameStore';
-import { Card } from '@/components/ui/Card';
-
-export const Dashboard = () => {
-  const { currentWeek, roles, playerRole } = useGameStore();
-  const playerState = roles[playerRole];
-
-  return (
-    <Card>
-      <h2 className="text-xl font-bold">Week: {currentWeek}</h2>
-      <p>Inventory: {playerState.inventory}</p>
-      <p>Backlog: {playerState.backlog}</p>
-      <p>Cost: ${playerState.cost.toFixed(2)}</p>
-    </Card>
-  );
-};
-```
-
-### Local Storage Persistence (`lib/localStorage.ts`)
-
-A utility module will handle saving and loading the game state from local storage.
-
-```typescript
-import { GameState } from '@/types';
-
-const GAME_STATE_KEY = 'beer-game-state';
-
-export const saveState = (state: GameState): void => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem(GAME_STATE_KEY, serializedState);
-  } catch (e) {
-    console.error("Could not save game state", e);
-  }
-};
-
-export const loadState = (): GameState | undefined => {
-  try {
-    const serializedState = localStorage.getItem(GAME_STATE_KEY);
-    if (serializedState === null) {
-      return undefined;
+      return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* ... child components ... */}
+          <OrderPlacement gameController={gameController} />
+        </div>
+      );
     }
-    return JSON.parse(serializedState);
-  } catch (e) {
-    console.error("Could not load game state", e);
-    return undefined;
-  }
-};
-```
+    ```
 
-### AI Manager (`lib/ai.ts`)
+#### `components/game/Dashboard.tsx`
+Displays the player's key metrics. It reads directly from the global store.
 
-The AI for the non-player roles will be managed in a dedicated module.
+-   **Props**: None.
+-   **State**: Subscribes to `currentWeek`, `settings`, and `roles` from `useGameStore`.
+-   **Code**:
+    ```typescript
+    "use client";
+    import { useGameStore } from '@/store/gameStore';
+    // ...
+
+    export const Dashboard = () => {
+      const { currentWeek, settings, roles } = useGameStore();
+      const playerState = roles[settings.playerRole];
+      // ... render logic
+    };
+    ```
+
+#### `components/game/OrderPlacement.tsx`
+Handles user input for placing an order.
+
+-   **Props**: `gameController: GameController`.
+-   **State**: Local state for the input field: `const [orderQuantity, setOrderQuantity] = useState(0);`
+-   **Events**: Calls `gameController.placePlayerOrder(orderQuantity)` on button click.
+-   **Code**:
+    ```typescript
+    "use client";
+    import { useState } from 'react';
+    import { GameController } from '@/controller/GameController';
+    // ...
+
+    export const OrderPlacement = ({ gameController }) => {
+      const [orderQuantity, setOrderQuantity] = useState(0);
+      // ... event handlers
+    };
+    ```
+
+### 3.5. State Management
+
+-   **`store/gameStore.ts`**: The Zustand store will be minimal. It holds the state and provides selectors for components to subscribe to changes.
+
+    ```typescript
+    import create from 'zustand';
+    import { GameState } from '@/types';
+
+    export const useGameStore = create<GameState>((set) => ({
+      gameId: '',
+      settings: { playerRole: 'Retailer', duration: 20 },
+      currentWeek: 0,
+      roles: { /* initial state */ },
+      history: [],
+    }));
+    ```
+
+-   **`controller/GameController.ts`**: This class will contain the core game logic.
+
+    ```typescript
+    import { useGameStore } from '@/store/gameStore';
+    import { GameState } from '@/types';
+
+    export class GameController {
+      constructor() {
+        // The controller can get and set state directly
+        const { getState, setState } = useGameStore;
+      }
+
+      public advanceWeek() {
+        // 1. Fulfill incoming shipments
+        // 2. Fulfill outgoing orders
+        // 3. Update inventory and backlog
+        // 4. Calculate costs
+        // 5. Get AI orders
+        // 6. Advance all shipments and orders in transit
+        // 7. Update history and week number
+      }
+    }
+    ```
+
+## 4. Data Architecture Specifications
+
+The data model is fully typed in `types/index.ts` to ensure consistency across the application.
+
+-   **`Order`**: Represents a request for a quantity of beer from one role to another.
+-   **`Shipment`**: Represents a delivery of a quantity of beer.
+-   **`RoleState`**: Contains all the state for a single supply chain role (Retailer, etc.).
+-   **`GameState`**: The top-level state object that contains everything and is persisted to Local Storage.
 
 ```typescript
-import { RoleState } from '@/types';
+// types/index.ts
+export type Role = 'Retailer' | 'Wholesaler' | 'Distributor' | 'Factory';
 
-// A simple AI strategy: try to maintain a target inventory level
-const TARGET_INVENTORY = 20;
-
-export const getAIOrder = (roleState: RoleState): number => {
-  const { inventory, incomingOrders } = roleState;
-  const effectiveInventory = inventory + incomingOrders.reduce((a, b) => a + b, 0);
-  const deficit = TARGET_INVENTORY - effectiveInventory;
-  
-  // A simple heuristic: order the deficit, but not less than 0
-  const order = Math.max(0, deficit);
-  
-  // Add some randomness to simulate human behavior
-  const randomFactor = Math.random() * 0.2 + 0.9; // between 0.9 and 1.1
-  return Math.round(order * randomFactor);
-};
+export interface Order { /* ... */ }
+export interface Shipment { /* ... */ }
+export interface RoleState { /* ... */ }
+export interface GameState { /* ... */ }
 ```
 
-## 4. For QA Engineers
+## 5. For QA Engineers
 
-### Testing Strategy
+### 5.1. Testing Strategy
 
-- **Unit Tests**: Jest and React Testing Library will be used to test individual components and utility functions. The AI logic and game state transformations in the Zustand store are prime candidates for unit tests.
-- **Integration Tests**: The interaction between components and the Zustand store will be tested to ensure that the UI correctly reflects the game state.
-- **End-to-End (E2E) Tests**: Cypress or Playwright could be used to simulate a full game playthrough, from configuration to the summary screen.
+-   **Unit Tests (Jest)**: The `GameController` and all functions in `lib/` and `store/` must have comprehensive unit tests. The game logic is complex and must be validated independently of the UI.
+-   **Component Tests (React Testing Library)**: All UI components will be tested to ensure they render correctly based on props and state. User interactions will be simulated to test event handlers.
+-   **E2E Tests (Cypress)**: A full gameplay scenario will be tested end-to-end, from starting a new game to viewing the summary screen.
 
-## 5. For Security Analysts
+### 5.2. Key Areas to Test
 
-### Security Model
+-   **Game Logic**: The turn-advancement logic in `GameController` is the most critical part of the application.
+-   **State Persistence**: Test that the game state is correctly saved to and loaded from Local Storage.
+-   **Edge Cases**: Test for edge cases like placing an order of 0, handling large backlogs, and the game ending.
 
-- **Client-Side Only**: As a frontend-only application, the attack surface is limited. There is no server to attack and no user data is transmitted over the network.
-- **Input Sanitization**: All user input (primarily the order quantity) will be sanitized to prevent any potential XSS vectors, although the risk is minimal as this data is not rendered as HTML.
-- **Third-Party Libraries**: All third-party libraries will be regularly audited for vulnerabilities using `npm audit`.
+## 6. For Security Analysts
 
-## 6. Technology Stack Architecture
+-   **Threat Model**: The primary threat is Cross-Site Scripting (XSS) from third-party libraries. There is no server-side threat.
+-   **Mitigation**:
+    1.  **Dependency Scanning**: Use `npm audit` and Snyk to regularly scan for vulnerabilities in dependencies.
+    2.  **Content Security Policy (CSP)**: Implement a strict CSP to prevent loading of untrusted scripts.
+    3.  **Input Sanitization**: While the risk is low, all user input (the order quantity) will be sanitized to ensure it is a number.
 
-### Frontend Architecture
+## 7. Performance and Scalability
 
-- **Framework**: **Next.js 14+ (App Router)** with **TypeScript**.
-  - *Rationale*: Next.js provides a robust framework for building React applications with excellent performance and developer experience. The App Router simplifies routing and layouts. TypeScript adds static typing for improved code quality.
-- **State Management**: **Zustand**.
-  - *Rationale*: Zustand is a small, fast, and scalable state management solution that is simpler to use than Redux. It's a good fit for the complexity of the Beer Game's state.
-- **Styling**: **Tailwind CSS**.
-  - *Rationale*: Tailwind CSS allows for rapid UI development with a utility-first approach, which is ideal for this project.
-- **Charts**: **Chart.js** with `react-chartjs-2`.
-  - *Rationale*: Chart.js is a powerful and flexible charting library that can create the required historical data charts.
-
-### Backend Architecture
-
-- **No Backend**: This is a frontend-only application.
-
-### Database and Storage
-
-- **Primary Storage**: **Browser Local Storage**.
-  - *Rationale*: Local storage is sufficient for persisting the game state for a single-player experience and avoids the complexity of a backend.
-
-## 7. System Component Architecture
-
-### Core Components
-
-- **`GameProvider`**: A high-level component that initializes the Zustand store and provides it to the rest of the application.
-- **`Dashboard`**: Displays the current game state (inventory, orders, costs).
-- **`OrderPlacement`**: The form for the player to place their weekly order.
-- **`SupplyChainVisualizer`**: A visual representation of the four supply chain tiers and the flow of goods and orders.
-- **`HistoricalDataCharts`**: A set of charts displaying the player's performance over time.
-- **`AIManager`**: A non-UI module that contains the logic for the AI-controlled players.
-
-## 8. Data Architecture Specifications
-
-### Entity Design
-
-The primary entity is the `GameState`, which is a single object stored in local storage.
-
-- **`GameState`** (`types/index.ts`):
-  ```typescript
-  export type Role = 'Retailer' | 'Wholesaler' | 'Distributor' | 'Factory';
-
-  export interface RoleState {
-    inventory: number;
-    backlog: number;
-    incomingOrders: number[];
-    shipments: number[];
-    cost: number;
-  }
-
-  export interface WeekData {
-    week: number;
-    inventory: number;
-    order: number;
-    cost: number;
-  }
-
-  export interface GameState {
-    gameId: string;
-    playerRole: Role;
-    duration: number;
-    currentWeek: number;
-    roles: Record<Role, RoleState>;
-    history: WeekData[];
-  }
-  ```
-
-## 9. API Contract Specifications
-
-- **No API**: There are no API contracts as this is a frontend-only application.
-
-## 10. Security and Performance Foundation
-
-### Security Architecture
-
-- **Content Security Policy (CSP)**: A strict CSP will be implemented via meta tags to mitigate the risk of XSS attacks.
-- **Input Validation**: The order input will be strictly validated to ensure it is a non-negative integer.
-
-### Performance Architecture
-
-- **Caching**: The application will be served with aggressive caching headers. A service worker will be implemented to enable offline play.
-- **Asset Optimization**: Next.js will automatically optimize images. SVGs will be used for icons and visualizations where possible.
+-   **Performance**: The main performance concern is the re-rendering of the UI as the game state changes each week. This will be mitigated by:
+    -   Using memoization (`React.memo`) for expensive components.
+    -   Using granular selectors in Zustand to prevent unnecessary re-renders.
+-   **Scalability**: As a frontend-only application, scalability is handled by the user's browser. The application is designed to be lightweight to run smoothly on modern devices.
