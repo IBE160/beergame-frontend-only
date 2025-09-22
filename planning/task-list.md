@@ -11,7 +11,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
 
 #### Common tasks
 
-- [] Step 1: Project Setup
+- [x] Step 1: Project Setup
   - **Task**: Initialize a new Next.js project with TypeScript and Tailwind CSS. Configure ESLint and Prettier for code quality.
   - **Files**: 
     - `package.json`: Add dependencies.
