@@ -11,7 +11,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
 
 #### Common tasks
 
-- [ ] Step 1: Project Setup
+- [] Step 1: Project Setup
   - **Task**: Initialize a new Next.js project with TypeScript and Tailwind CSS. Configure ESLint and Prettier for code quality.
   - **Files**: 
     - `package.json`: Add dependencies.
@@ -224,6 +224,73 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
     - `src/lib/ai.ts`: Adjust the AI logic based on the difficulty.
   - **Step Dependencies**: Step 14, Step 19
   - **User Instructions**: Add difficulty settings to the game.
+
+- [ ] Step 26: F013 - Bullwhip Effect Visualization
+  - **Task**: Create a chart that visualizes the bullwhip effect by comparing order variability across the different supply chain tiers.
+  - **Files**:
+    - `src/components/charts/BullwhipEffectChart.tsx`: Create the chart component.
+    - `src/app/summary/page.tsx`: Add the chart to the summary page.
+    - `src/lib/calculator.ts`: Add logic to calculate the bullwhip effect metric.
+  - **Step Dependencies**: Step 22
+  - **User Instructions**: Implement the Bullwhip Effect Visualization and add it to the game summary page.
+
+- [ ] Step 27: F015 - Performance Achievements
+  - **Task**: Implement a system for unlocking and displaying performance achievements.
+  - **Files**:
+    - `src/lib/achievements.ts`: Define achievement criteria and logic for unlocking them.
+    - `src/store/gameStore.ts`: Add achievements to the persistent state.
+    - `src/components/achievements/AchievementIcon.tsx`: Create a component to display an achievement.
+    - `src/components/achievements/AchievementModal.tsx`: Create a modal to notify users of unlocked achievements.
+    - `src/app/profile/page.tsx`: Create a page to display all achievements.
+  - **Step Dependencies**: Step 21
+  - **User Instructions**: Implement the achievement system and a profile page to display them.
+
+- [ ] Step 28: F016 - Game Speed Control
+  - **Task**: Add a UI control to allow players to adjust the speed of game animations.
+  - **Files**:
+    - `src/components/game/GameSpeedControl.tsx`: Create the slider component for speed control.
+    - `src/store/gameStore.ts`: Add `gameSpeed` to the store.
+    - `src/app/game/page.tsx`: Add the control to the game UI.
+    - `src/controller/GameController.ts`: Adjust animation timings based on `gameSpeed`.
+  - **Step Dependencies**: Step 16
+  - **User Instructions**: Implement the game speed control feature.
+
+- [ ] Step 29: F017 - Multi-Game Statistics
+  - **Task**: Store statistics from multiple games and create a page to display trends and averages.
+  - **Files**:
+    - `src/lib/localStorage.ts`: Enhance to store a history of game summaries.
+    - `src/app/statistics/page.tsx`: Create the page to display multi-game stats.
+    - `src/components/charts/TrendChart.tsx`: Create a component to show performance over time.
+  - **Step Dependencies**: Step 22
+  - **User Instructions**: Implement multi-game statistics tracking and a page to view them.
+
+- [ ] Step 30: F018 - Responsive Mobile Interface
+  - **Task**: Ensure all components and pages are fully responsive and provide a good user experience on mobile devices.
+  - **Files**:
+    - `src/styles/globals.css`: Add responsive styles.
+    - `src/app/game/page.tsx`: Adjust layout for mobile.
+    - `src/components/game/Dashboard.tsx`: Adjust layout for mobile.
+    - `src/components/charts/HistoricalDataCharts.tsx`: Ensure charts are responsive.
+    - `tailwind.config.ts`: Add or adjust breakpoints if necessary.
+  - **Step Dependencies**: All UI steps
+  - **User Instructions**: Review and update the entire application to be mobile-friendly. This is a cross-cutting concern.
+
+- [ ] Step 31: F019 - Keyboard Shortcuts
+  - **Task**: Implement keyboard shortcuts for common actions like placing an order.
+  - **Files**:
+    - `src/hooks/useKeyboardShortcuts.ts`: Create a custom hook to handle keyboard events.
+    - `src/components/game/OrderPlacement.tsx`: Use the hook to trigger order placement.
+    - `src/components/ui/Modal.tsx`: Add a help modal to display available shortcuts.
+  - **Step Dependencies**: Step 17
+  - **User Instructions**: Implement keyboard shortcuts for power users.
+
+- [ ] Step 32: F020 - Data Export Functionality
+  - **Task**: Allow users to export their game data to a CSV or JSON file.
+  - **Files**:
+    - `src/lib/export.ts`: Create functions to convert game data to CSV/JSON.
+    - `src/app/summary/page.tsx`: Add an "Export Data" button to the summary page.
+  - **Step Dependencies**: Step 22
+  - **User Instructions**: Implement the data export functionality on the game summary page.
 
 ## Summary and next step
 This updated task list provides a more detailed, design-aware, step-by-step guide to building the Beer Game application. The next step is to start with "Step 1: Project Setup" and proceed through the tasks in order. Each step is designed to be a self-contained unit of work that moves the project closer to completion.
