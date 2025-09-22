@@ -23,8 +23,8 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: None
   - **User Instructions**: Run `npx create-next-app@latest --typescript --tailwind --eslint .` to initialize the project.
 
-- [ ] Step 2: Folder Structure Setup
-  - **Task**: Create the `src` folder and the directory structure as defined in the architecture document.
+- [x] Step 2: Folder Structure Setup
+  - **Task**: Create the `src` folder and the directory structure as defined in the architecture document at `@planning/architecture.md`.
   - **Files**: 
     - `src/app/`
     - `src/components/`
