@@ -157,7 +157,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 6, Step 8, Step 16
   - **User Instructions**: Build the UI for placing orders.
 
-- [ ] Step 18: F005, F007, F012, F015 - Game Logic Implementation
+- [x] Step 18: F005, F007, F012, F015 - Game Logic Implementation
   - **Task**: Implement the core game logic in the `GameController` to handle advancing the week, processing orders, and calculating costs.
   - **Files**: 
     - `src/controller/GameController.ts`: Implement the `advanceWeek` method.
