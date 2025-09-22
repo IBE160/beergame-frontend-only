@@ -14,7 +14,7 @@ PLANNING_FOLDER = `@planning`
 
 ### Instructions
 
-- Read all files in the `PLANNING_FOLDER` directory
+- Read all files in the `@PLANNING_FOLDER` directory
 - You ARE allowed to mix backend and frontend steps together if it makes sense
 - Each step must not modify more then 15 files in a single-run. If it does, you need to ask the user for permission and explain why it’s a special case.
 - Always start with project setup and critical-path configurations (common tasks)
@@ -24,7 +24,7 @@ PLANNING_FOLDER = `@planning`
 
 ### Workflow
 
-### Step 1: Plan the general tasks first
+#### Step 1: Plan the general tasks first
 
 Plan all tasks that are common to all features first, for instance (these are merely examples, you can add or remove tasks as needed)
 - Setup the project
@@ -41,17 +41,17 @@ Plan all tasks that are common to all features first, for instance (these are me
 - Setup the monitoring
 - etc
 
-### Step 2: Plan the feature tasks
+#### Step 2: Plan the feature tasks
 Plan all tasks that are specific to each feature, for instance (these are merely examples, you can add or remove tasks as needed)
 - Feature 1
 - Feature 2
 - Feature 3
 - etc
 
-### Step 3: Write the task list file  
+#### Step 3: Write the task list file  
 
-Write the task list file in the `PLANNING_FOLDER` directory
-Let the name be `task-list.md` on follow the output format below
+Write the task list file in the `@PLANNING_FOLDER` directory
+Let the name be `@PLANNING_FOLDER/task-list.md` and follow the output format below
 
 
 
@@ -64,6 +64,8 @@ Let the name be `task-list.md` on follow the output format below
 ## Tasks
 
 ### MVP
+
+You can find the MVP definitions here: `@/planning/project-brief.md`.
 
 #### Common tasks
 <foreach> Common task <do>
@@ -87,11 +89,12 @@ Let the name be `task-list.md` on follow the output format below
 </foreach>
 ```
 
-### Advanced features
+
+### Future features
 
 
 #### Feature tasks
-<foreach> Feature task <do>
+<foreach> Future feature task <do>
 - [ ] Step n: [Brief title]
   - **Task**: [Detailed explanation of what needs to be implemented]
   - **Files**: [Maximum of 15 files, ideally less]
@@ -99,16 +102,14 @@ Let the name be `task-list.md` on follow the output format below
   - **Step Dependencies**: [Step Dependencies]
   - **User Instructions**: [Instructions for User]
 </foreach>
-```
 
-
-### Checklist / grading
+## Checklist / grading
 
 - Make sure to cover all features
 - Make sure all requirements are covered
 
 
-### Summary and next step
+## Summary and next step
 
 
 - Tell the user whats next, and present a short summary of the task list.
