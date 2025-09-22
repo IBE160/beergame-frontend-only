@@ -11,7 +11,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
 
 #### Common tasks
 
-- [] Step 1: Project Setup
+- [x] Step 1: Project Setup
   - **Task**: Initialize a new Next.js project with TypeScript and Tailwind CSS. Configure ESLint and Prettier for code quality.
   - **Files**: 
     - `package.json`: Add dependencies.
@@ -23,7 +23,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: None
   - **User Instructions**: Run `npx create-next-app@latest --typescript --tailwind --eslint .` to initialize the project.
 
-- [ ] Step 2: Folder Structure Setup
+- [x] Step 2: Folder Structure Setup
   - **Task**: Create the `src` folder and the directory structure as defined in the architecture document.
   - **Files**: 
     - `src/app/`
