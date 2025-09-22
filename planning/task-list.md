@@ -54,7 +54,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 2, Step 3
   - **User Instructions**: Populate the global stylesheet and the root layout file according to the design system.
 
-- [ ] Step 5: UI Component Scaffolding
+- [x] Step 5: UI Component Scaffolding
   - **Task**: Create placeholder files for all the reusable UI components defined in `planning/design/components`.
   - **Files**:
     - `src/components/ui/Button.tsx`
@@ -66,21 +66,21 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 2
   - **User Instructions**: Create the empty component files in the `src/components/ui` directory.
 
-- [ ] Step 6: Build Button Component
+- [x] Step 6: Build Button Component
   - **Task**: Implement the `Button` component with primary and secondary variants, and all interaction states (default, hover, active, focus, disabled) as specified in `buttons.md`.
   - **Files**:
     - `src/components/ui/Button.tsx`: Implement the component logic and styling.
   - **Step Dependencies**: Step 5
   - **User Instructions**: Build the `Button` component, ensuring all variants and states match the design specifications.
 
-- [ ] Step 7: Build Card Component
+- [x] Step 7: Build Card Component
   - **Task**: Implement the `Card` component, including the standard and selectable variants as specified in `cards.md`.
   - **Files**:
     - `src/components/ui/Card.tsx`: Implement the component logic and styling.
   - **Step Dependencies**: Step 5
   - **User Instructions**: Build the `Card` component with its variants.
 
-- [ ] Step 8: Build Form Components
+- [x] Step 8: Build Form Components
   - **Task**: Implement the `Input` and `Slider` components as specified in `forms.md`.
   - **Files**:
     - `src/components/ui/Input.tsx`: Implement the text input component.
