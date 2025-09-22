@@ -2,6 +2,7 @@
 
 import useGameStore from '@/store/gameStore';
 import { MetricCard } from './MetricCard';
+import { OrderPlacement } from './OrderPlacement';
 
 export function Dashboard() {
   const { playerRole, roles, currentWeek } = useGameStore();
@@ -22,8 +23,9 @@ export function Dashboard() {
         <MetricCard label="Inventory" value={playerState.inventory} />
         <MetricCard label="Backlog" value={playerState.backlog} />
         <MetricCard label="Incoming Orders" value={playerState.incomingOrders.length} />
-        <MetricCard label="Total Cost" value={`$${playerState.cost}`} />
+        <MetricCard label="Total Cost" value={`${playerState.cost}`} />
       </div>
+      <OrderPlacement />
     </div>
   );
 }

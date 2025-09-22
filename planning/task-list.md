@@ -140,7 +140,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 11, Step 14
   - **User Instructions**: Implement the game initialization logic.
 
-- [ ] Step 16: F003 - Game Dashboard UI
+- [x] Step 16: F003 - Game Dashboard UI
   - **Task**: Create the main game dashboard UI, which will display the player's metrics using `Card` components.
   - **Files**: 
     - `src/app/game/page.tsx`: Update to show the dashboard after configuration.
@@ -149,7 +149,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 7, Step 14
   - **User Instructions**: Build the UI for the game dashboard.
 
-- [ ] Step 17: F004 - Order Placement UI
+- [x] Step 17: F004 - Order Placement UI
   - **Task**: Create the order placement component with an `Input` field and a "Place Order" `Button`.
   - **Files**: 
     - `src/components/game/OrderPlacement.tsx`: Create the order placement component.
