@@ -17,7 +17,7 @@ PLANNING_FOLDER = `@planning`
 - Read all files in the `PLANNING_FOLDER` directory
 - You ARE allowed to mix backend and frontend steps together if it makes sense
 - Each step must not modify more then 15 files in a single-run. If it does, you need to ask the user for permission and explain why it’s a special case.
-- Always start with project setup and critical-path configurations
+- Always start with project setup and critical-path configurations (common tasks)
 - Try to make each new step contained, so that the app can be built and functional between tasks
 - Mark dependencies between steps
 
@@ -48,9 +48,14 @@ Plan all tasks that are specific to each feature, for instance (these are merely
 - Feature 3
 - etc
 
+### Step 3: Write the task list file  
+
+Write the task list file in the `PLANNING_FOLDER` directory
+Let the name be `task-list.md` on follow the output format below
 
 
-### Output format
+
+```markdown
 
 # Task list
 
@@ -58,8 +63,12 @@ Plan all tasks that are specific to each feature, for instance (these are merely
 [Write the goal of this task list]
 ## Tasks
 
-### Common tasks
+### MVP
+
+#### Common tasks
 <foreach> Common task <do>
+
+- [ ] Step n: [Brief title]
   - **Task**: [Detailed explanation of what needs to be implemented]
   - **Files**: [Maximum of 15 files, ideally less]
     - `path/to/file1.ts`: [Description of changes]
@@ -67,17 +76,39 @@ Plan all tasks that are specific to each feature, for instance (these are merely
   - **User Instructions**: [Instructions for User]
 </foreach>
 
-### Feature tasks
+#### Feature tasks
 <foreach> Feature task <do>
+- [ ] Step n: [Brief title]
   - **Task**: [Detailed explanation of what needs to be implemented]
   - **Files**: [Maximum of 15 files, ideally less]
     - `path/to/file1.ts`: [Description of changes]
   - **Step Dependencies**: [Step Dependencies]
   - **User Instructions**: [Instructions for User]
 </foreach>
+```
 
+### Advanced features
+
+
+#### Feature tasks
+<foreach> Feature task <do>
+- [ ] Step n: [Brief title]
+  - **Task**: [Detailed explanation of what needs to be implemented]
+  - **Files**: [Maximum of 15 files, ideally less]
+    - `path/to/file1.ts`: [Description of changes]
+  - **Step Dependencies**: [Step Dependencies]
+  - **User Instructions**: [Instructions for User]
+</foreach>
+```
 
 
 ### Checklist / grading
 
+- Make sure to cover all features
+- Make sure all requirements are covered
+
+
 ### Summary and next step
+
+
+- Tell the user whats next, and present a short summary of the task list.
