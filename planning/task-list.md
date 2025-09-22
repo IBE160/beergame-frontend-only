@@ -38,7 +38,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 1
   - **User Instructions**: Create the directories inside the `src` folder.
 
-- [ ] Step 3: Design Tokens Integration
+- [x] Step 3: Design Tokens Integration
   - **Task**: Translate the `design-tokens.json` into Tailwind CSS theme extensions. This includes colors, font sizes, spacing, and animation settings.
   - **Files**:
     - `tailwind.config.ts`: Extend the theme with custom tokens.
