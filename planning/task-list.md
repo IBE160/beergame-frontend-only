@@ -66,21 +66,21 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 2
   - **User Instructions**: Create the empty component files in the `src/components/ui` directory.
 
-- [ ] Step 6: Build Button Component
+- [x] Step 6: Build Button Component
   - **Task**: Implement the `Button` component with primary and secondary variants, and all interaction states (default, hover, active, focus, disabled) as specified in `buttons.md`.
   - **Files**:
     - `src/components/ui/Button.tsx`: Implement the component logic and styling.
   - **Step Dependencies**: Step 5
   - **User Instructions**: Build the `Button` component, ensuring all variants and states match the design specifications.
 
-- [ ] Step 7: Build Card Component
+- [x] Step 7: Build Card Component
   - **Task**: Implement the `Card` component, including the standard and selectable variants as specified in `cards.md`.
   - **Files**:
     - `src/components/ui/Card.tsx`: Implement the component logic and styling.
   - **Step Dependencies**: Step 5
   - **User Instructions**: Build the `Card` component with its variants.
 
-- [ ] Step 8: Build Form Components
+- [x] Step 8: Build Form Components
   - **Task**: Implement the `Input` and `Slider` components as specified in `forms.md`.
   - **Files**:
     - `src/components/ui/Input.tsx`: Implement the text input component.
@@ -88,14 +88,14 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 5
   - **User Instructions**: Build the form components, ensuring they are accessible.
 
-- [ ] Step 9: Type Definitions
+- [x] Step 9: Type Definitions
   - **Task**: Create all necessary TypeScript type definitions in `types/index.ts` as specified in the architecture document.
   - **Files**: 
     - `src/types/index.ts`: Define `Role`, `Order`, `Shipment`, `RoleState`, and `GameState`.
   - **Step Dependencies**: Step 2
   - **User Instructions**: Create the `index.ts` file in the `types` directory and add the type definitions.
 
-- [ ] Step 10: State Management Setup
+- [x] Step 10: State Management Setup
   - **Task**: Set up the Zustand store for global state management.
   - **Files**: 
     - `src/store/gameStore.ts`: Create the Zustand store with the initial `GameState`.
