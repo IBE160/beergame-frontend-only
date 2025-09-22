@@ -1,5 +1,6 @@
 import useGameStore from '../store/gameStore';
 import { GameState, Role, RoleState, Order, Shipment } from '../types';
+import { getAIOrder } from '../lib/ai';
 
 class GameController {
   private useStore = useGameStore;
@@ -93,8 +94,7 @@ class GameController {
 
       // 4. Place orders to upstream partner
       if (roleName !== playerRole) {
-        // Simple AI for non-player roles
-        const orderQuantity = Math.max(0, totalDemand - roleState.inventory + 4);
+        const orderQuantity = getAIOrder(roleState);
         if (upstreamPartner) {
             newRolesState[upstreamPartner].incomingOrders.push({ id: `w${currentWeek}-${roleName}`, week: currentWeek, quantity: orderQuantity });
         }

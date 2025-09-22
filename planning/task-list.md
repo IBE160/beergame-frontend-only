@@ -165,7 +165,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 15, Step 17
   - **User Instructions**: Implement the core game logic. This is a complex step.
 
-- [ ] Step 19: F006 - AI-Controlled Partners
+- [x] Step 19: F006 - AI-Controlled Partners
   - **Task**: Implement the AI logic for the non-player roles.
   - **Files**: 
     - `src/lib/ai.ts`: Create the AI logic for making ordering decisions.
