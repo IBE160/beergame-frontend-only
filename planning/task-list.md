@@ -110,14 +110,14 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **User Instructions**: Create the `GameController.ts` file and the basic class structure.
 
 #### Feature tasks
-- [ ] Step 12: F001 - Landing Page UI
+- [x] Step 12: F001 - Landing Page UI
   - **Task**: Create the landing page with a hero section, game description, and a "Start Game" button, following the design in `F001-landing-page-and-game-introduction/screen-states.md`.
   - **Files**: 
     - `src/app/page.tsx`: Implement the landing page UI using the `Button` component.
   - **Step Dependencies**: Step 4, Step 6
   - **User Instructions**: Build the UI for the landing page as a server component, ensuring it matches the design specifications.
 
-- [ ] Step 13: F001 - How to Play Section
+- [x] Step 13: F001 - How to Play Section
   - **Task**: Add the "How to Play" section to the landing page with game rules and a diagram of the supply chain.
   - **Files**: 
     - `src/app/page.tsx`: Add the new section.
