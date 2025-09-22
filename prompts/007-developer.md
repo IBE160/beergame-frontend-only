@@ -96,3 +96,133 @@ Your implementations will be evaluated on:
 - **User Experience** - Intuitive, responsive interfaces that delight users and meet accessibility standards
 
 You deliver frontend implementations that serve as the seamless bridge between technical architecture and user experience, ensuring every interface is both functionally robust and experientially excellent.
+
+
+# Best practice for NEXT JS apps
+
+# Best Practices for Developing Simple Web Apps in Next.js (2025)
+
+Here’s an up-to-date, opinionated checklist of best practices for building **simple web apps with Next.js (App Router, Next 15 + React 19)**.
+
+---
+
+## 1) Project setup & repo hygiene
+
+* Use **TypeScript** from the start; keep `tsconfig.json` in **strict** mode.
+* Enable **ESLint** with `next/core-web-vitals`, migrate to ESLint flat config when possible.
+* Store secrets in **`.env.local`**, never commit them; only expose values with `NEXT_PUBLIC_`.
+
+## 2) File structure, routing & navigation (App Router)
+
+* Favor the **App Router** (`app/`) for new apps.
+* Keep routes shallow; colocate UI, data functions, and styles per feature folder.
+* **Links prefetch** in production when visible; disable for huge lists.
+
+## 3) Server vs Client Components (default to Server)
+
+* Default to **Server Components** for pages/layouts.
+* Keep secrets and heavy deps on the server; only put browser-only code in Client Components.
+
+## 4) Data fetching, caching & revalidation
+
+* Fetch on the server with **`fetch`**, ORMs, or SDKs.
+* Use **Next’s cache & revalidation** knobs (`cache`, `revalidate`, tags).
+* Stream slow bits with **`Suspense` + `loading.tsx`**.
+* **Partial Prerendering (PPR)** is experimental—use carefully.
+
+## 5) Forms, mutations & Server Actions
+
+* Prefer **Server Actions** for simple CRUD forms.
+* Use `useFormStatus` and/or `useActionState` for UX. Validate with Zod.
+* Keep actions small, typed, validated, and colocated with their feature.
+
+## 6) Runtimes (Node.js vs Edge)
+
+* Default to **Node.js runtime**; use **Edge** only when latency-critical.
+* Middleware runs on **Edge**; keep it tiny.
+
+## 7) Performance
+
+* Ship less JS: use Server Components by default.
+* Dynamic-import heavy widgets with `next/dynamic`.
+* Optimize assets with **`next/image`** and fonts via **`next/font`**.
+
+## 8) SEO & metadata
+
+* Use the **Metadata API** (`metadata` or `generateMetadata`).
+* Add **sitemap** and **robots** via file conventions.
+* Be aware of **streaming metadata** in Next 15.
+
+## 9) Styling
+
+* Options: **CSS Modules**, **Tailwind**, or **styled-components**.
+* For small apps, Tailwind + component primitives is pragmatic.
+* Avoid global CSS sprawl.
+
+## 10) State management
+
+* Keep **server state on the server**. Use React state for UI.
+* Use **TanStack Query** only when needed.
+
+## 11) Images, fonts & static assets
+
+* Use **`next/image`** with correct `sizes`.
+* Load fonts with **`next/font`** to avoid FOIT/FOUT.
+
+## 12) API routes (Route Handlers)
+
+* Use **`app/**/route.ts`** with Web Request/Response.
+* Keep handlers pure; return `Response.json`.
+
+## 13) Security
+
+* Add a **Content-Security-Policy (CSP)**; avoid `unsafe-inline`.
+* Review patches for **Next.js CVEs** (e.g., CVE-2025-29927).
+* Review **OWASP Top 10** basics.
+
+## 14) Databases & serverless connections
+
+* Use **pooling** (Prisma Accelerate, PgBouncer, Neon, Supabase).
+* Keep a single `PrismaClient` instance in Node runtime.
+
+## 15) Observability & analytics
+
+* Turn on **Vercel Analytics** or use `reportWebVitals`.
+
+## 16) Testing
+
+* Add **Playwright** smoke tests.
+* Add unit tests with **Vitest** or **Jest** when logic warrants it.
+
+## 17) Accessibility & UX
+
+* Use semantic HTML; test with keyboard and screen readers.
+* Use Lighthouse/axe.
+
+## 18) Internationalization (if needed)
+
+* Use `next-intl` or similar libraries built for the App Router.
+* Keep translations colocated and typed.
+
+## 19) CI/CD & deployment
+
+* Use **preview deployments** per PR.
+* Use environment-specific envs set in your host (e.g., Vercel project settings).
+
+## 20) Keep current (Next 15 specifics)
+
+* Next **15** adds React 19 support, improved errors, Turbopack dev stable, and metadata streaming.
+
+---
+
+## Quick starter checklist
+
+* [ ] `pnpm create next-app@latest --ts` → ESLint (`core-web-vitals`) on, Tailwind optional.
+* [ ] Add `.env.local` (never commit). Expose only `NEXT_PUBLIC_*`.
+* [ ] Keep pages/layouts as **Server Components**; use `"use client"` for interactive islands.
+* [ ] Forms: **Server Actions** + `useFormStatus` / `useActionState`; validate with Zod.
+* [ ] Use **`next/image`** + **`next/font`**; dynamic-import heavy widgets.
+* [ ] Add **CSP** via Middleware; review auth if using Middleware.
+* [ ] If using Postgres/MySQL, set up **pooling** / Prisma Accelerate.
+* [ ] Add **sitemap/robots** via file conventions; use **Metadata API**.
+* [ ] Turn on **Analytics** (Vercel) and a **Playwright** smoke test.
