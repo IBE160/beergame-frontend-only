@@ -8,4 +8,6 @@
 
 - Do NOT tick a step in task-list.md as completed unless i specifically say so.
 
+- DO NOT do more steps from the task list, than i ask for!!!!
+
 
