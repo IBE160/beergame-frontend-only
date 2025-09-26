@@ -88,7 +88,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 5
   - **User Instructions**: Build the form components, ensuring they are accessible.
 
-- [ ] Step 9: Type Definitions
+- [x] Step 9: Type Definitions
   - **Task**: Create all necessary TypeScript type definitions in `types/index.ts` as specified in the architecture document.
   - **Files**: 
     - `src/types/index.ts`: Define `Role`, `Order`, `Shipment`, `RoleState`, and `GameState`.
