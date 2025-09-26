@@ -95,7 +95,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 2
   - **User Instructions**: Create the `index.ts` file in the `types` directory and add the type definitions.
 
-- [ ] Step 10: State Management Setup
+- [x] Step 10: State Management Setup
   - **Task**: Set up the Zustand store for global state management.
   - **Files**: 
     - `src/store/gameStore.ts`: Create the Zustand store with the initial `GameState`.
