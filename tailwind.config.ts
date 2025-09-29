@@ -42,8 +42,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        primary: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        monospace: ["'JetBrains Mono'", "Consolas", "monospace"],
+        primary: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        monospace: "'JetBrains Mono', Consolas, monospace",
       },
       fontWeight: {
         light: "300",

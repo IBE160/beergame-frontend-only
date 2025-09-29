@@ -1,17 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: #e6f0f7; /* primary-light */
-    --foreground: #212529; /* neutral-900 */
+    /* Color Palette */
+    --color-primary: 0 90 156; /* #005A9C */
+    --color-primary-dark: 0 62 107; /* #003E6B */
+    --color-primary-light: 230 240 247; /* #E6F0F7 */
+
+    --color-secondary: 108 117 125; /* #6C757D */
+    --color-secondary-light: 248 249 250; /* #F8F9FA */
+    --color-secondary-pale: 222 226 230; /* #DEE2E6 */
+
+    --color-accent-primary: 255 191 0; /* #FFBF00 */
+    --color-accent-secondary: 230 162 0; /* #E6A200 */
+
+    --color-semantic-success: 40 167 69; /* #28A745 */
+    --color-semantic-warning: 255 193 7; /* #FFC107 */
+    --color-semantic-error: 220 53 69; /* #DC3545 */
+    --color-semantic-info: 23 162 184; /* #17A2B8 */
+
+    --color-neutral-50: 248 249 250; /* #F8F9FA */
+    --color-neutral-100: 241 243 245; /* #F1F3F5 */
+    --color-neutral-200: 233 236 239; /* #E9ECEF */
+    --color-neutral-300: 222 226 230; /* #DEE2E6 */
+    --color-neutral-400: 206 212 218; /* #CED4DA */
+    --color-neutral-500: 173 181 189; /* #ADB5BD */
+    --color-neutral-600: 108 117 125; /* #6C757D */
+    --color-neutral-700: 73 80 87; /* #495057 */
+    --color-neutral-800: 52 58 64; /* #343A40 */
+    --color-neutral-900: 33 37 41; /* #212529 */
+
+    /* Base */
+    --background: var(--color-neutral-50);
+    --foreground: var(--color-neutral-900);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
-    }
+  /* Basic Reset and Body Styles */
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: theme('fontFamily.primary');
+    font-weight: theme('fontWeight.regular');
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography System */
+  h1, h2, h3, h4, h5 {
+    font-weight: theme('fontWeight.semibold');
+    letter-spacing: theme('letterSpacing.tight');
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: theme('fontSize.h1');
+    font-weight: theme('fontWeight.bold');
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: theme('fontSize.h2');
+    font-weight: theme('fontWeight.bold');
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    font-size: theme('fontSize.h3');
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-size: theme('fontSize.h4');
+  }
+
+  h5 {
+    font-size: theme('fontSize.h5');
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  code {
+    font-family: theme('fontFamily.monospace');
+    font-size: theme('fontSize.code');
   }
 }
