@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-primary">{children}</body>
+      <body className="font-primary font-normal bg-neutral-50 text-neutral-800">{children}</body>
     </html>
   );
 }
