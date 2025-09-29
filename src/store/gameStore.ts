@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { GameState, GameSettings, Role, RoleState } from '@/types';
+import { GameState, GameSettings, RoleState } from '@/types';
 
 const initialSettings: GameSettings = {
   playerRole: 'Retailer',
@@ -26,7 +26,7 @@ const initialState: Omit<GameState, 'gameId' | 'history'> = {
   },
 };
 
-export const useGameStore = create<GameState>((set) => ({
+export const useGameStore = create<GameState>(() => ({
   gameId: '',
   ...initialState,
   history: [],

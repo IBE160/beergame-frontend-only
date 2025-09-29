@@ -44,7 +44,7 @@ export default function Home() {
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-h2 font-bold text-neutral-900">What is the Beer Game?</h2>
               <p className="mt-4 text-body text-neutral-600">
-                The Beer Game isn't about drinking beer. It's a powerful simulation developed at MIT to demonstrate fundamental principles of supply chain management. Four players—a Retailer, Wholesaler, Distributor, and Factory—must work together to meet customer demand, but are hampered by communication delays and the challenge of predicting orders.
+                The Beer Game isn&apos;t about drinking beer. It&apos;s a powerful simulation developed at MIT to demonstrate fundamental principles of supply chain management. Four players—a Retailer, Wholesaler, Distributor, and Factory—must work together to meet customer demand, but are hampered by communication delays and the challenge of predicting orders.
               </p>
             </div>
           </div>
@@ -63,21 +63,21 @@ export default function Home() {
                   <ShoppingCart className="text-primary" size={32} />
                 </div>
                 <h3 className="text-h4 font-semibold mt-4">1. Receive Orders</h3>
-                <p className="mt-2 text-body_small text-neutral-600">Each week, you'll receive an order from your downstream partner. Your job is to ship them beer from your inventory.</p>
+                <p className="mt-2 text-body_small text-neutral-600">Each week, you&apos;ll receive an order from your downstream partner. Your job is to ship them beer from your inventory.</p>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm">
                 <div className="inline-block bg-primary-light p-4 rounded-full">
                   <Truck className="text-primary" size={32} />
                 </div>
                 <h3 className="text-h4 font-semibold mt-4">2. Place Orders</h3>
-                <p className="mt-2 text-body_small text-neutral-600">Based on the orders you're getting and your current inventory, you must place an order with your upstream partner.</p>
+                <p className="mt-2 text-body_small text-neutral-600">Based on the orders you&apos;re getting and your current inventory, you must place an order with your upstream partner.</p>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm">
                 <div className="inline-block bg-primary-light p-4 rounded-full">
                   <BarChart className="text-primary" size={32} />
                 </div>
                 <h3 className="text-h4 font-semibold mt-4">3. Minimize Costs</h3>
-                <p className="mt-2 text-body_small text-neutral-600">You're charged for holding excess inventory and for every order you can't fill (backlog). The player with the lowest total cost wins.</p>
+                <p className="mt-2 text-body_small text-neutral-600">You&apos;re charged for holding excess inventory and for every order you can&apos;t fill (backlog). The player with the lowest total cost wins.</p>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ export default function Home() {
             <div>
               <h2 className="text-h2 font-bold text-neutral-900">The Bullwhip Effect</h2>
               <p className="mt-4 text-body text-neutral-600">
-                This is the core lesson of the game. You'll discover how a small, predictable change in customer demand can become wildly amplified as it travels up the supply chain, leading to massive overstocking and shortages.
+                This is the core lesson of the game. You&apos;ll discover how a small, predictable change in customer demand can become wildly amplified as it travels up the supply chain, leading to massive overstocking and shortages.
               </p>
               <p className="mt-4 text-body text-neutral-600">
                 Understanding this phenomenon is critical for anyone in business, logistics, or management. This simulation makes the concept tangible and unforgettable.

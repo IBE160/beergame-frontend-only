@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Slider } from "@/components/ui/Slider";
@@ -38,7 +37,6 @@ const roles: {
 export function Configuration() {
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [duration, setDuration] = useState<number>(20);
-  const router = useRouter();
 
   const handleStartGame = () => {
     if (selectedRole) {
