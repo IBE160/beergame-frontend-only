@@ -83,8 +83,67 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why it Matters Section */}
+        {/* Supply Chain Roles Section */}
         <section className="py-2xl bg-white">
+            <div className="container mx-auto px-6">
+                <div className="text-center mb-12">
+                    <h2 className="text-h2 font-bold text-neutral-900">The Supply Chain Roles</h2>
+                    <p className="mt-4 text-body text-neutral-600 max-w-3xl mx-auto">Communication is limited. You only know what your direct partner orders.</p>
+                </div>
+                <div className="relative">
+                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-neutral-200"></div>
+                    <div className="relative flex justify-between items-start">
+                        {/* Role 1: Factory */}
+                        <div className="w-1/4 text-center">
+                            <div className="relative mb-4">
+                                <div className="inline-block bg-white p-5 rounded-full border-2 border-neutral-200">
+                                    <Factory className="text-primary" size={40} />
+                                </div>
+                            </div>
+                            <h3 className="text-h5 font-semibold">Factory</h3>
+                            <p className="text-caption text-neutral-500">Produces the beer</p>
+                        </div>
+                        {/* Role 2: Distributor */}
+                        <div className="w-1/4 text-center">
+                            <div className="relative mb-4">
+                                <div className="inline-block bg-white p-5 rounded-full border-2 border-neutral-200">
+                                    <Truck className="text-primary" size={40} />
+                                </div>
+                            </div>
+                            <h3 className="text-h5 font-semibold">Distributor</h3>
+                            <p className="text-caption text-neutral-500">Distributes to wholesalers</p>
+                        </div>
+                        {/* Role 3: Wholesaler */}
+                        <div className="w-1/4 text-center">
+                            <div className="relative mb-4">
+                                <div className="inline-block bg-white p-5 rounded-full border-2 border-neutral-200">
+                                    <Users className="text-primary" size={40} />
+                                </div>
+                            </div>
+                            <h3 className="text-h5 font-semibold">Wholesaler</h3>
+                            <p className="text-caption text-neutral-500">Supplies retailers</p>
+                        </div>
+                        {/* Role 4: Retailer */}
+                        <div className="w-1/4 text-center">
+                            <div className="relative mb-4">
+                                <div className="inline-block bg-white p-5 rounded-full border-2 border-neutral-200">
+                                    <ShoppingCart className="text-primary" size={40} />
+                                </div>
+                            </div>
+                            <h3 className="text-h5 font-semibold">Retailer</h3>
+                            <p className="text-caption text-neutral-500">Sells to the customer</p>
+                        </div>
+                    </div>
+                    <div className="mt-8 text-center">
+                        <p className="text-body_small text-neutral-600"><span className="font-semibold text-primary-dark">Orders</span> flow from Retailer to Factory.</p>
+                        <p className="text-body_small text-neutral-600"><span className="font-semibold text-accent-secondary">Shipments</span> flow from Factory to Retailer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Why it Matters Section */}
+        <section className="py-2xl bg-neutral-50">
           <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-h2 font-bold text-neutral-900">The Bullwhip Effect</h2>
@@ -95,9 +154,9 @@ export default function Home() {
                 Understanding this phenomenon is critical for anyone in business, logistics, or management. This simulation makes the concept tangible and unforgettable.
               </p>
             </div>
-            <div className="bg-primary-light p-8 rounded-lg">
+            <div className="bg-white p-8 rounded-lg shadow-sm">
               {/* Placeholder for a chart visualization */}
-              <BarChart size={150} className="mx-auto text-primary/50" />
+              <BarChart size={150} className="mx-auto text-primary/20" />
               <p className="text-center mt-4 font-semibold text-primary-dark">Order volatility increases up the supply chain.</p>
             </div>
           </div>

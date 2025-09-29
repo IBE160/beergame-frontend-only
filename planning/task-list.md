@@ -117,7 +117,7 @@ You can find the MVP definitions here: `@/planning/project-brief.md`.
   - **Step Dependencies**: Step 4, Step 6
   - **User Instructions**: Build the UI for the landing page as a server component, ensuring it matches the design specifications.
 
-- [ ] Step 13: F001 - How to Play Section
+- [x] Step 13: F001 - How to Play Section
   - **Task**: Add the "How to Play" section to the landing page with game rules and a diagram of the supply chain.
   - **Files**: 
     - `src/app/page.tsx`: Add the new section.
