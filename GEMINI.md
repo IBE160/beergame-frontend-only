@@ -10,4 +10,6 @@
 
 - DO NOT do more steps from the task list, than i ask for!!!!
 
+- When generating .tsx files, always read the @planning/ai-docs/tailwind\docs folder first to learn how to use tailwind version 4.
+
 
